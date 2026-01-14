@@ -14,6 +14,8 @@ export const exportProject = async (project: Project) => {
     const zip = new JSZip();
     const namespace = sanitizeId(project.name);
 
+    zip.file("project_state.json", JSON.stringify(project, null, 2));
+
     const packMcmeta = {
         pack: {
             pack_format: 48,

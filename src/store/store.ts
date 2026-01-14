@@ -10,6 +10,7 @@ interface AppState {
 
     // Actions
     addProject: (name: string) => void;
+    importProject: (project: Project) => void;
     selectProject: (id: string | null) => void;
     selectJob: (id: string | null) => void;
     deleteProject: (id: string) => void;
@@ -74,6 +75,22 @@ export const useStore = create<AppState>()(
                 set((state) => ({
                     projects: [...state.projects, newProject],
                     currentProjectId: newProject.id,
+                }));
+            },
+
+            importProject: (project) => {
+                // We regenerate the ID to treat it as a copy/import and avoid collisions
+                const importedProject: Project = {
+                    ...project,
+                    id: uuidv4(),
+                    name: `${project.name} (Imported)`,
+                    updated_at: Date.now(),
+                };
+
+                set((state) => ({
+                    projects: [...state.projects, importedProject],
+                    currentProjectId: importedProject.id,
+                    currentJobId: null,
                 }));
             },
 

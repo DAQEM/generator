@@ -5,6 +5,9 @@ import { Button } from "../ui/button";
 
 const NoProjectSelected = () => {
     const { projects, selectProject } = useStore();
+    const recentProjects = [...projects].sort(
+        (a, b) => b.updated_at - a.updated_at
+    );
 
     return (
         <div
@@ -23,10 +26,10 @@ const NoProjectSelected = () => {
                 </div>
                 <div id="projects" className="flex flex-col gap-1">
                     <h4>Recent Projects</h4>
-                    {projects.length === 0 ? (
+                    {recentProjects.length === 0 ? (
                         <p>No projects available.</p>
                     ) : (
-                        projects.slice(0, 4).map((project) => (
+                        recentProjects.slice(0, 4).map((project) => (
                             <Button
                                 key={project.id}
                                 variant="link"
@@ -42,5 +45,4 @@ const NoProjectSelected = () => {
         </div>
     );
 };
-
 export default NoProjectSelected;
