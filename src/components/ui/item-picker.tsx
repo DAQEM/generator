@@ -17,6 +17,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import {
+    fetchMinecraftBlocks,
     fetchMinecraftItems,
     fetchMinecraftLanguage,
     getItemName,
@@ -28,16 +29,22 @@ interface ItemPickerProps {
     value?: string;
     onChange: (value: string) => void;
     className?: string;
+    type?: "item" | "block";
 }
 
-export function ItemPicker({ value, onChange, className }: ItemPickerProps) {
+export function ItemPicker({
+    value,
+    onChange,
+    className,
+    type = "item",
+}: ItemPickerProps) {
     const [open, setOpen] = React.useState(false);
     const [search, setSearch] = React.useState("");
 
-    // Fetch items
+    // Fetch items or blocks based on type
     const { data: items = [], isLoading: isLoadingItems } = useQuery({
-        queryKey: ["minecraft-items"],
-        queryFn: fetchMinecraftItems,
+        queryKey: ["minecraft-registry", type],
+        queryFn: type === "block" ? fetchMinecraftBlocks : fetchMinecraftItems,
         staleTime: Infinity,
     });
 
@@ -119,7 +126,7 @@ export function ItemPicker({ value, onChange, className }: ItemPickerProps) {
                             </>
                         ) : (
                             <span className="text-muted-foreground">
-                                Select item...
+                                Select {type}...
                             </span>
                         )}
                     </div>
@@ -129,15 +136,15 @@ export function ItemPicker({ value, onChange, className }: ItemPickerProps) {
             <PopoverContent className="w-90 p-0">
                 <Command shouldFilter={false} className="h-auto">
                     <CommandInput
-                        placeholder="Search item..."
+                        placeholder={`Search ${type}...`}
                         value={search}
                         onValueChange={setSearch}
                     />
                     <CommandList>
                         <CommandEmpty>
                             {isLoadingItems
-                                ? "Loading items..."
-                                : "No item found."}
+                                ? `Loading ${type}s...`
+                                : `No ${type} found.`}
                         </CommandEmpty>
                         <CommandGroup>
                             {displayItems.map((item) => (
@@ -167,7 +174,6 @@ export function ItemPicker({ value, onChange, className }: ItemPickerProps) {
                                         <span>
                                             {getItemName(item, language)}
                                         </span>
-                                        {/* Optional: Show ID in small text if searching by ID or for clarity */}
                                         <span className="text-xs text-muted-foreground font-mono">
                                             {item}
                                         </span>

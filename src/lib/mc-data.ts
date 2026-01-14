@@ -8,13 +8,27 @@ export async function fetchMinecraftItems(): Promise<string[]> {
         const response = await fetch(REGISTRIES_URL);
         if (!response.ok) throw new Error("Failed to fetch registries");
         const data = await response.json();
-        // The item registry contains both standard items and block-items
         const items = data["minecraft:item"] || data["item"] || [];
         return items
             .map((id: string) => (id.includes(":") ? id : `minecraft:${id}`))
             .sort();
     } catch (error) {
         console.error("Failed to fetch Minecraft items:", error);
+        return [];
+    }
+}
+
+export async function fetchMinecraftBlocks(): Promise<string[]> {
+    try {
+        const response = await fetch(REGISTRIES_URL);
+        if (!response.ok) throw new Error("Failed to fetch registries");
+        const data = await response.json();
+        const blocks = data["minecraft:block"] || data["block"] || [];
+        return blocks
+            .map((id: string) => (id.includes(":") ? id : `minecraft:${id}`))
+            .sort();
+    } catch (error) {
+        console.error("Failed to fetch Minecraft blocks:", error);
         return [];
     }
 }

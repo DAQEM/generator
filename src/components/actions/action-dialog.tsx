@@ -93,6 +93,19 @@ const ActionDialog = ({ isOpen, onClose, actionToEdit }: Props) => {
         handleClose();
     };
 
+    const handleUpdateCondition = (
+        conditionId: string,
+        data: Record<string, any>
+    ) => {
+        setConditions((prev) =>
+            prev.map((c) =>
+                c.id === conditionId
+                    ? { ...c, data: { ...c.data, ...data } }
+                    : c
+            )
+        );
+    };
+
     return (
         <Dialog open={isOpen} onOpenChange={handleClose}>
             <DialogContent
@@ -198,10 +211,13 @@ const ActionDialog = ({ isOpen, onClose, actionToEdit }: Props) => {
                                         No conditions added yet.
                                     </p>
                                 ) : (
-                                    conditions.map((condition, index) => (
+                                    conditions.map((condition) => (
                                         <AdvancedConditionCard
-                                            key={index}
+                                            key={condition.id}
                                             condition={condition}
+                                            onUpdateCondition={
+                                                handleUpdateCondition
+                                            }
                                             onRemoveCondition={(
                                                 conditionId
                                             ) => {
