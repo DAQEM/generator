@@ -6,7 +6,6 @@ import ProjectView from "./components/projects/project-view";
 import { useStore } from "./store/store";
 
 function App() {
-    const { projects } = useStore();
     const { currentProjectId, currentJobId } = useStore();
 
     return (

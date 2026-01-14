@@ -649,7 +649,8 @@ export const conditionTypesDefinition = {
                 types: [
                     {
                         type: "EffectCategory",
-                        typeURL: "/projects/arc/wiki/json_formats/#effect-category",
+                        typeURL:
+                            "/projects/arc/wiki/json_formats/#effect-category",
                     },
                 ],
                 required: true,
@@ -686,7 +687,8 @@ export const conditionTypesDefinition = {
                 types: [
                     {
                         type: "Block",
-                        typeURL: "https://minecraft.wiki/w/List_of_blocks_by_version",
+                        typeURL:
+                            "https://minecraft.wiki/w/List_of_blocks_by_version",
                     },
                 ],
                 required: true,
@@ -817,7 +819,7 @@ export const conditionTypesDefinition = {
         title: "Item Equipped",
         emoji: "🪙✅",
         category: "items",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "item",
@@ -837,7 +839,7 @@ export const conditionTypesDefinition = {
         title: "Item In Hand",
         emoji: "🪙✋",
         category: "items",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "item",
@@ -869,7 +871,7 @@ export const conditionTypesDefinition = {
         title: "Item In Inventory",
         emoji: "🪙📦",
         category: "items",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "item",
@@ -922,7 +924,7 @@ export const conditionTypesDefinition = {
         title: "Not",
         emoji: "🚫",
         category: "none",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "conditions",
@@ -942,7 +944,7 @@ export const conditionTypesDefinition = {
         title: "Or",
         emoji: "🔀",
         category: "none",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "conditions",
@@ -980,7 +982,7 @@ export const conditionTypesDefinition = {
         title: "Scoreboard",
         emoji: "📋",
         category: "scoreboard",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "objective",
@@ -1007,7 +1009,7 @@ export const conditionTypesDefinition = {
         title: "Team",
         emoji: "👥",
         category: "teams",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "team",
@@ -1022,7 +1024,7 @@ export const conditionTypesDefinition = {
         title: "Dimension",
         emoji: "🌍",
         category: "world",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "dimension",
@@ -1130,7 +1132,7 @@ export const rewardTypesDefinition = {
         title: "Potion Effect",
         emoji: "💉",
         category: "effects",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "effect",
@@ -1252,7 +1254,7 @@ export const rewardTypesDefinition = {
         title: "Experience",
         emoji: "✨",
         category: "experience",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "min",
@@ -1311,7 +1313,7 @@ export const rewardTypesDefinition = {
         title: "Item",
         emoji: "🪙",
         category: "items",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "item",
@@ -1370,7 +1372,7 @@ export const rewardTypesDefinition = {
         title: "Command",
         emoji: "💻",
         category: "server",
-        isActionCompatible: (action: ActionType) => true,
+        isActionCompatible: () => true,
         parameters: [
             {
                 name: "command",
