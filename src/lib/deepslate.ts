@@ -111,15 +111,15 @@ class ResourceManager implements ItemRendererResources {
         return [0, 0, 0, 0];
     }
 
-    getBlockFlags(id: Identifier): { opaque: boolean } | null {
+    getBlockFlags(_: Identifier): { opaque: boolean } | null {
         return { opaque: false };
     }
 
-    getBlockProperties(id: Identifier): Record<string, string[]> | null {
+    getBlockProperties(_: Identifier): Record<string, string[]> | null {
         return null;
     }
 
-    getDefaultBlockProperties(id: Identifier): Record<string, string> | null {
+    getDefaultBlockProperties(_: Identifier): Record<string, string> | null {
         return null;
     }
 
