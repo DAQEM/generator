@@ -1,5 +1,8 @@
 import { useStore } from "@/store/store";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { Button } from "../ui/button";
 import {
     Dialog,
@@ -7,15 +10,42 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "../ui/dialog";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "../ui/form";
 import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+
+const formSchema = z.object({
+    name: z
+        .string()
+        .min(1, "Project name is required")
+        .max(50, "Name is too long"),
+});
 
 const AddProjectDialog = () => {
     const { addProject } = useStore();
-    const [name, setName] = useState("");
+    const [open, setOpen] = useState(false);
+
+    const form = useForm({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            name: "",
+        },
+    });
+
+    function onSubmit(values: z.infer<typeof formSchema>) {
+        addProject(values.name);
+        setOpen(false);
+        form.reset();
+    }
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button className="justify-start">Create Project</Button>
             </DialogTrigger>
@@ -23,24 +53,46 @@ const AddProjectDialog = () => {
                 <DialogTitle asChild>
                     <h3 className="text-2xl! font-bold!">New Project</h3>
                 </DialogTitle>
-                <div className="grid w-full max-w-sm items-center gap-3">
-                    <Label htmlFor="name">Project Name</Label>
-                    <Input
-                        id="name"
-                        type="text"
-                        placeholder="Your Project Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                </div>
-                <div className="flex gap-4">
-                    <Button variant="outline" className="w-full">
-                        Cancel
-                    </Button>
-                    <Button className="w-full" onClick={() => addProject(name)}>
-                        Create Project
-                    </Button>
-                </div>
+
+                <Form {...form}>
+                    <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-4"
+                    >
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Project Name</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            placeholder="My Awesome Project"
+                                            {...field}
+                                            value={
+                                                (field.value as string) ?? ""
+                                            }
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <div className="flex gap-4 pt-4">
+                            <Button
+                                type="button"
+                                variant="outline"
+                                className="w-full"
+                                onClick={() => setOpen(false)}
+                            >
+                                Cancel
+                            </Button>
+                            <Button type="submit" className="w-full">
+                                Create Project
+                            </Button>
+                        </div>
+                    </form>
+                </Form>
             </DialogContent>
         </Dialog>
     );

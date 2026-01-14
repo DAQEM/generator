@@ -1,12 +1,22 @@
 import { useStore } from "@/store/store";
 import type { Job } from "@/types";
-import { useEffect, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { Button } from "../ui/button";
 import { ColorPicker } from "../ui/color-picker";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "../ui/form";
 import { Input } from "../ui/input";
 import { ItemPicker } from "../ui/item-picker";
-import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 
 interface Props {
@@ -15,60 +25,75 @@ interface Props {
     jobToEdit?: Job | null;
 }
 
+// Schema validates STRINGS only. No transformation here to avoid type conflicts.
+const formSchema = z.object({
+    name: z.string().min(1, "Name is required"),
+    description: z.string().optional(),
+    color: z.string().min(1, "Color is required"),
+    icon: z.string().optional(),
+    price: z
+        .string()
+        .trim()
+        .min(1, "Price is required")
+        .refine(
+            (val) => !isNaN(Number(val)) && val !== "",
+            "Must be a valid number"
+        )
+        .refine((val) => Number(val) >= 0, "Price must be positive"),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
 const JobDialog = ({ isOpen, onClose, jobToEdit }: Props) => {
     const { currentProjectId, addJob, updateJob } = useStore();
-
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [color, setColor] = useState("#F2F4F8");
-    const [icon, setIcon] = useState("");
-    const [price, setPrice] = useState("");
-
     const isEditMode = !!jobToEdit;
+
+    const form = useForm<FormValues>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            name: "",
+            description: "",
+            color: "#F2F4F8",
+            icon: "",
+            price: "",
+        },
+    });
 
     useEffect(() => {
         if (isOpen) {
-            if (jobToEdit) {
-                setName(jobToEdit.name);
-                setDescription(jobToEdit.description || "");
-                setColor(jobToEdit.color || "#F2F4F8");
-                setIcon(jobToEdit.icon || "");
-                setPrice(String(jobToEdit.price || ""));
-            } else {
-                setName("");
-                setDescription("");
-                setColor("#F2F4F8");
-                setIcon("");
-                setPrice("");
-            }
+            form.reset({
+                name: jobToEdit?.name || "",
+                description: jobToEdit?.description || "",
+                color: jobToEdit?.color || "#F2F4F8",
+                icon: jobToEdit?.icon || "",
+                price: jobToEdit ? String(jobToEdit.price) : "",
+            });
         }
-    }, [isOpen, jobToEdit]);
+    }, [isOpen, jobToEdit, form]);
 
-    function handleClose() {
+    const handleClose = () => {
+        form.reset();
         onClose();
-    }
+    };
 
-    const handleSave = () => {
+    function onSubmit(values: FormValues) {
+        // Manually transform to number here
         const payload = {
-            name,
-            description,
-            color,
-            icon,
-            price: Number(price),
+            name: values.name,
+            description: values.description || "",
+            color: values.color,
+            icon: values.icon || "",
+            price: Number(values.price),
         };
 
         if (isEditMode && jobToEdit) {
-            if (updateJob) {
-                updateJob(currentProjectId!, jobToEdit.id, payload);
-            } else {
-                console.error("updateJob function missing from store");
-            }
+            updateJob(currentProjectId!, jobToEdit.id, payload);
         } else {
             addJob(currentProjectId!, payload);
         }
 
         handleClose();
-    };
+    }
 
     return (
         <Dialog open={isOpen} onOpenChange={handleClose}>
@@ -78,70 +103,125 @@ const JobDialog = ({ isOpen, onClose, jobToEdit }: Props) => {
                         {isEditMode ? "Edit Job" : "New Job"}
                     </h3>
                 </DialogTitle>
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-4">
-                        <div className="grid w-full items-center gap-3">
-                            <Label htmlFor="name">Job Name</Label>
-                            <Input
-                                id="name"
-                                type="text"
-                                placeholder="Your Job Name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                        </div>
-                        <div className="flex flex-col w-full gap-3 h-full">
-                            <Label htmlFor="description">Job Description</Label>
-                            <Textarea
-                                id="description"
-                                className="h-full"
-                                placeholder="Your Job Description"
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </div>
-                    </div>
-                    <div className="flex flex-col gap-4">
-                        <div className="grid w-full items-center gap-3">
-                            <Label htmlFor="color">Color</Label>
-                            <ColorPicker
-                                className="h-9 border-0 border-b border-border"
-                                value={color}
-                                onChange={setColor}
-                            />
-                        </div>
-                        <div className="grid w-full items-center gap-3">
-                            <Label htmlFor="icon">Icon Item</Label>
-                            <ItemPicker 
-                                value={icon} 
-                                onChange={setIcon} 
-                            />
-                        </div>
-                        <div className="grid w-full items-center gap-3">
-                            <Label htmlFor="price">Price</Label>
-                            <Input
-                                id="price"
-                                type="text"
-                                min={0}
-                                placeholder="Job Price"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div className="flex gap-4">
-                    <Button
-                        variant="outline"
-                        className="w-full"
-                        onClick={handleClose}
+
+                <Form {...form}>
+                    <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-4"
                     >
-                        Cancel
-                    </Button>
-                    <Button className="w-full" onClick={handleSave}>
-                        {isEditMode ? "Save Changes" : "Add Job"}
-                    </Button>
-                </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="flex flex-col gap-4">
+                                <FormField
+                                    control={form.control}
+                                    name="name"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Job Name</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    placeholder="Miner"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
+                                    name="description"
+                                    render={({ field }) => (
+                                        <FormItem className="flex flex-col h-full">
+                                            <FormLabel>
+                                                Job Description
+                                            </FormLabel>
+                                            <FormControl>
+                                                <Textarea
+                                                    placeholder="Mine blocks to earn money."
+                                                    className="h-full min-h-[100px]"
+                                                    {...field}
+                                                    value={field.value ?? ""}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+
+                            <div className="flex flex-col gap-4">
+                                <FormField
+                                    control={form.control}
+                                    name="color"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Color</FormLabel>
+                                            <FormControl>
+                                                <ColorPicker
+                                                    className="h-9 border-0 border-b border-border w-full"
+                                                    {...field}
+                                                    value={
+                                                        field.value ?? "#F2F4F8"
+                                                    }
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
+                                    name="icon"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Icon Item</FormLabel>
+                                            <FormControl>
+                                                <ItemPicker
+                                                    {...field}
+                                                    value={field.value ?? ""}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <FormField
+                                    control={form.control}
+                                    name="price"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Price</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    placeholder="1000"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4 pt-2">
+                            <Button
+                                type="button"
+                                variant="outline"
+                                className="w-full"
+                                onClick={handleClose}
+                            >
+                                Cancel
+                            </Button>
+                            <Button type="submit" className="w-full">
+                                {isEditMode ? "Save Changes" : "Add Job"}
+                            </Button>
+                        </div>
+                    </form>
+                </Form>
             </DialogContent>
         </Dialog>
     );
