@@ -62,7 +62,7 @@ const JobDetailView = () => {
                 ))}
                 <Button
                     variant="outline"
-                    className="min-h-48"
+                    className="min-h-40"
                     onClick={() => setIsActionModalOpen(true)}
                 >
                     <Plus /> Add Action

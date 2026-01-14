@@ -19,7 +19,7 @@ const ActionCard = ({ action }: Props) => {
     }
 
     return (
-        <Card className="w-full h-full min-h-48 relative">
+        <Card className="w-full h-full min-h-40 relative">
             <CardHeader>
                 <div>
                     <Button
@@ -28,8 +28,12 @@ const ActionCard = ({ action }: Props) => {
                         className="absolute top-2 right-2"
                         onClick={(e) => {
                             e.stopPropagation();
-                            deleteAction(currentProjectId!, currentJobId!, action.id)}
-                        }
+                            deleteAction(
+                                currentProjectId!,
+                                currentJobId!,
+                                action.id
+                            );
+                        }}
                     >
                         <X />
                     </Button>

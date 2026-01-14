@@ -2,6 +2,7 @@ import { useStore } from "@/store/store";
 import type { Job } from "@/types";
 import { useState } from "react";
 import { Button } from "../ui/button";
+import { DeepslateItem } from "../ui/deepslate-item";
 import JobDialog from "./job-dialog";
 import RemoveJobDialog from "./remove-job-dialog";
 
@@ -20,8 +21,10 @@ const JobHeader = ({ openAddActionModal }: Props) => {
         <div className="bg-white flex justify-between items-center py-4 px-8 mb-8">
             <div className="flex flex-col gap-2">
                 <div className="flex gap-4">
-                    <div className="size-12 bg-neutral-200">
-                        <img src={job.icon} alt={job.name} />
+                    <div className="size-16 rounded-md flex items-center justify-center">
+                        {job.icon && (
+                            <DeepslateItem id={job.icon} className="size-16" />
+                        )}
                     </div>
                     <h3>{job.name}</h3>
                 </div>

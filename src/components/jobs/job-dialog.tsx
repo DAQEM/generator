@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { ColorPicker } from "../ui/color-picker";
 import { Dialog, DialogContent, DialogTitle } from "../ui/dialog";
 import { Input } from "../ui/input";
+import { ItemPicker } from "../ui/item-picker";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 
@@ -110,13 +111,10 @@ const JobDialog = ({ isOpen, onClose, jobToEdit }: Props) => {
                             />
                         </div>
                         <div className="grid w-full items-center gap-3">
-                            <Label htmlFor="icon">Icon</Label>
-                            <Input
-                                id="icon"
-                                type="text"
-                                placeholder="Job Icon"
-                                value={icon}
-                                onChange={(e) => setIcon(e.target.value)}
+                            <Label htmlFor="icon">Icon Item</Label>
+                            <ItemPicker 
+                                value={icon} 
+                                onChange={setIcon} 
                             />
                         </div>
                         <div className="grid w-full items-center gap-3">

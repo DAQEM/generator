@@ -53,7 +53,7 @@ const ProjectView = () => {
                 ))}
                 <Button
                     variant="outline"
-                    className="min-h-48"
+                    className="min-h-40 h-full"
                     onClick={() => setIsAddJobModalOpen(true)}
                 >
                     <Plus /> Add Job
