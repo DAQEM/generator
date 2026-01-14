@@ -1860,7 +1860,7 @@ export const rewardTypesDefinition = {
         emoji: "⚡",
         category: "blocks",
         isActionCompatible: (action: ActionType) =>
-            action.id === "arc:on_get_destroy_speed",
+            action.id === "on_get_destroy_speed",
         parameters: [
             {
                 name: "multiplier",
@@ -2004,9 +2004,9 @@ export const rewardTypesDefinition = {
         emoji: "⚔️",
         category: "entities",
         isActionCompatible: (action: ActionType) =>
-            action.id === "arc:on_get_hurt" ||
-            action.id === "arc:on_hurt_player" ||
-            action.id === "arc:on_hurt_entity",
+            action.id === "on_get_hurt" ||
+            action.id === "on_hurt_player" ||
+            action.id === "on_hurt_entity",
         parameters: [
             {
                 name: "multiplier",
@@ -2349,7 +2349,7 @@ export const rewardTypesDefinition = {
         emoji: "⚡",
         category: "players",
         isActionCompatible: (action: ActionType) =>
-            action.id === "arc:on_get_attack_speed",
+            action.id === "on_get_attack_speed",
         parameters: [
             {
                 name: "multiplier",

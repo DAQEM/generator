@@ -1,6 +1,7 @@
 import { useStore } from "@/store/store";
 import { useState } from "react";
 
+import { exportProject } from "@/lib/exporter"; // Import the exporter
 import type { Job } from "@/types";
 import { Plus } from "lucide-react";
 import JobCard from "../jobs/job-card";
@@ -13,8 +14,21 @@ const ProjectView = () => {
     const { getCurrentProject, selectJob, selectProject } = useStore();
     const project = getCurrentProject();
     const [isAddJobModalOpen, setIsAddJobModalOpen] = useState(false);
+    const [isExporting, setIsExporting] = useState(false);
 
     if (!project) return null;
+
+    const handleExport = async () => {
+        setIsExporting(true);
+        try {
+            await exportProject(project);
+        } catch (error) {
+            console.error("Failed to export project", error);
+            alert("Failed to export project. Check console for details.");
+        } finally {
+            setIsExporting(false);
+        }
+    };
 
     return (
         <div className="p-8 h-[calc(100vh-80px)] flex flex-col">
@@ -35,7 +49,13 @@ const ProjectView = () => {
                 >
                     Add Job
                 </Button>
-                <Button variant="default">Export</Button>
+                <Button
+                    variant="default"
+                    onClick={handleExport}
+                    disabled={isExporting}
+                >
+                    {isExporting ? "Exporting..." : "Export Datapack"}
+                </Button>
             </ProjectHeader>
 
             {/* Jobs Grid */}
