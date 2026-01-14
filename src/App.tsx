@@ -1,18 +1,27 @@
-import CssBaseline from "@mui/material/CssBaseline";
+import JobDetailView from "./components/jobs/job-detail-view";
+import Layout from "./components/layout/layout";
+import NoProjectSelected from "./components/layout/no-project-selected";
+import Navbar from "./components/navigation/navbar";
+import ProjectView from "./components/projects/project-view";
 import { useStore } from "./store/store";
 
 function App() {
     const { projects } = useStore();
+    const { currentProjectId, currentJobId } = useStore();
 
     return (
-        <>
-            {/* <CssBaseline /> */}
-            <div>
-                <h1 className="text-3xl font-bold underline text-blue-500">
-                    Tailwind v4 is Working!
-                </h1>
-            </div>
-        </>
+        <Layout>
+            <Navbar />
+            {currentProjectId ? (
+                currentJobId ? (
+                    <JobDetailView />
+                ) : (
+                    <ProjectView />
+                )
+            ) : (
+                <NoProjectSelected />
+            )}
+        </Layout>
     );
 }
 
