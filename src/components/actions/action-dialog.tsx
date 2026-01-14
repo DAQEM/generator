@@ -18,7 +18,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../ui/select";
-
 interface ActionData {
     id: string;
     type: ActionTypesKeys;
@@ -27,7 +26,6 @@ interface ActionData {
     conditions: any[];
     data: any;
 }
-
 interface Props {
     isOpen: boolean;
     onClose: () => void;
@@ -35,11 +33,9 @@ interface Props {
     jobId: string;
     actionToEdit?: ActionData | null;
 }
-
 const ActionDialog = ({ isOpen, onClose, actionToEdit }: Props) => {
     const { currentProjectId, currentJobId, addAction, updateAction } =
         useStore();
-
     const [actionType, setActionType] = useState<ActionTypesKeys>(
         Object.keys(actionTypes)[0] as ActionTypesKeys
     );
@@ -95,14 +91,10 @@ const ActionDialog = ({ isOpen, onClose, actionToEdit }: Props) => {
 
     const handleUpdateCondition = (
         conditionId: string,
-        data: Record<string, any>
+        updates: Partial<JobCondition>
     ) => {
         setConditions((prev) =>
-            prev.map((c) =>
-                c.id === conditionId
-                    ? { ...c, data: { ...c.data, ...data } }
-                    : c
-            )
+            prev.map((c) => (c.id === conditionId ? { ...c, ...updates } : c))
         );
     };
 
@@ -262,5 +254,4 @@ const ActionDialog = ({ isOpen, onClose, actionToEdit }: Props) => {
         </Dialog>
     );
 };
-
 export default ActionDialog;

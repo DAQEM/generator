@@ -1,5 +1,4 @@
 import type { ActionTypesKeys, ConditionTypesKeys } from "./lib/data";
-
 export interface Project {
     id: string;
     name: string;
@@ -7,7 +6,6 @@ export interface Project {
     updated_at: number;
     jobs: Job[];
 }
-
 export interface Job {
     id: string;
     name: string;
@@ -17,7 +15,6 @@ export interface Job {
     price: number;
     actions: JobAction[];
 }
-
 export interface JobAction {
     id: string;
     type: ActionTypesKeys;
@@ -26,9 +23,9 @@ export interface JobAction {
     max_experience: number;
     data: Record<string, any>;
 }
-
 export interface JobCondition {
     id: string;
     type: ConditionTypesKeys;
     data: Record<string, any>;
+    inverted?: boolean;
 }

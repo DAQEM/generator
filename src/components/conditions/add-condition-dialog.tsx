@@ -14,13 +14,11 @@ import {
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import ConditionCard from "./condition-card";
-
 type Props = {
     conditions: JobCondition[];
     onConditionsChange: (conditions: JobCondition[]) => void;
     actionType: ActionTypesKeys;
 };
-
 const AddConditionDialog = ({
     conditions,
     onConditionsChange,
@@ -28,7 +26,6 @@ const AddConditionDialog = ({
 }: Props) => {
     const [query, setQuery] = useState<string | undefined>(undefined);
     const [open, setOpen] = useState(false);
-
     const compatibleConditions = Object.entries(conditionTypes).filter(
         ([, condition]) => {
             return condition.isActionCompatible(actionTypes[actionType]);
@@ -81,10 +78,11 @@ const AddConditionDialog = ({
                                     size="full"
                                     className="text-left"
                                     onClick={() => {
-                                        const newCondition = {
+                                        const newCondition: JobCondition = {
                                             id: v4(),
                                             type: condition.id,
                                             data: {},
+                                            inverted: false,
                                         };
 
                                         onConditionsChange([
@@ -118,5 +116,4 @@ const AddConditionDialog = ({
         </Dialog>
     );
 };
-
 export default AddConditionDialog;

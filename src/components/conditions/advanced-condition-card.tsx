@@ -14,23 +14,26 @@ import {
     SelectTrigger,
     SelectValue,
 } from "../ui/select";
+import { Switch } from "../ui/switch";
 import { Textarea } from "../ui/textarea";
-
 type Props = {
     condition: JobCondition;
     onRemoveCondition: (conditionId: string) => void;
-    onUpdateCondition: (conditionId: string, data: Record<string, any>) => void;
+    onUpdateCondition: (
+        conditionId: string,
+        data: Partial<JobCondition>
+    ) => void;
 };
-
 const AdvancedConditionCard = ({
     condition,
     onRemoveCondition,
     onUpdateCondition,
 }: Props) => {
     const conditionType = conditionTypes[condition.type];
-
     const handleChange = (key: string, value: any) => {
-        onUpdateCondition(condition.id, { [key]: value });
+        onUpdateCondition(condition.id, {
+            data: { ...condition.data, [key]: value },
+        });
     };
 
     return (
@@ -60,6 +63,20 @@ const AdvancedConditionCard = ({
                                 : "Configure the parameters below."}
                         </p>
                     </div>
+                </div>
+                <div className="flex items-center space-x-2 mt-2">
+                    <Switch
+                        id={`inverted-${condition.id}`}
+                        checked={!!condition.inverted}
+                        onCheckedChange={(checked) =>
+                            onUpdateCondition(condition.id, {
+                                inverted: checked,
+                            })
+                        }
+                    />
+                    <Label htmlFor={`inverted-${condition.id}`}>
+                        Invert Condition
+                    </Label>
                 </div>
             </CardHeader>
             {conditionType.parameters.length > 0 && (
@@ -264,5 +281,4 @@ const AdvancedConditionCard = ({
         </Card>
     );
 };
-
 export default AdvancedConditionCard;
