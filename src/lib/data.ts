@@ -123,14 +123,14 @@ export type ActionType = {
 
 const actionTypesDefinition = {
     // Arc Actions
-    on_advancement: {
+    "arc:on_advancement": {
         id: "arc:on_advancement",
         title: "On Advancement",
         emoji: "🏆",
         category: "advancements",
         producesData: ["arc:advancement"],
     },
-    on_break_block: {
+    "arc:on_break_block": {
         id: "arc:on_break_block",
         title: "On Break Block",
         emoji: "⛏️",
@@ -142,7 +142,7 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_get_destroy_speed: {
+    "arc:on_get_destroy_speed": {
         id: "arc:on_get_destroy_speed",
         title: "On Get Destroy Speed",
         emoji: "⚡",
@@ -155,7 +155,7 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_harvest_crop: {
+    "arc:on_harvest_crop": {
         id: "arc:on_harvest_crop",
         title: "On Harvest Crop",
         emoji: "🌾",
@@ -167,7 +167,7 @@ const actionTypesDefinition = {
             "arc:exp_drop",
         ],
     },
-    on_interact_block: {
+    "arc:on_interact_block": {
         id: "arc:on_interact_block",
         title: "On Interact Block",
         emoji: "🖱️",
@@ -180,21 +180,21 @@ const actionTypesDefinition = {
             "arc:hand",
         ],
     },
-    on_place_block: {
+    "arc:on_place_block": {
         id: "arc:on_place_block",
         title: "On Place Block",
         emoji: "🧱",
         category: "blocks",
         producesData: ["arc:block_state", "arc:block_position", "arc:world"],
     },
-    on_plant_crop: {
+    "arc:on_plant_crop": {
         id: "arc:on_plant_crop",
         title: "On Plant Crop",
         emoji: "🌱",
         category: "blocks",
         producesData: ["arc:block_state", "arc:block_position", "arc:world"],
     },
-    on_till_soil: {
+    "arc:on_till_soil": {
         id: "arc:on_till_soil",
         title: "On Till Soil",
         emoji: "🌾",
@@ -206,14 +206,14 @@ const actionTypesDefinition = {
             "arc:item_stack",
         ],
     },
-    on_breed_animal: {
+    "arc:on_breed_animal": {
         id: "arc:on_breed_animal",
         title: "On Breed Animal",
         emoji: "🐑",
         category: "entities",
         producesData: ["arc:entity"],
     },
-    on_death: {
+    "arc:on_death": {
         id: "arc:on_death",
         title: "On Death",
         emoji: "💀",
@@ -226,28 +226,28 @@ const actionTypesDefinition = {
             "arc:exp_drop",
         ],
     },
-    on_get_hurt: {
+    "arc:on_get_hurt": {
         id: "arc:on_get_hurt",
         title: "On Get Hurt",
         emoji: "🤕",
         category: "players",
         producesData: ["arc:entity", "arc:damage_source", "arc:damage_amount"],
     },
-    on_hurt_entity: {
+    "arc:on_hurt_entity": {
         id: "arc:on_hurt_entity",
         title: "On Hurt Entity",
         emoji: "🗡️",
         category: "entities",
         producesData: ["arc:entity", "arc:damage_source", "arc:damage_amount"],
     },
-    on_hurt_player: {
+    "arc:on_hurt_player": {
         id: "arc:on_hurt_player",
         title: "On Hurt Player",
         emoji: "🩸",
         category: "players",
         producesData: ["arc:entity", "arc:damage_source", "arc:damage_amount"],
     },
-    on_interact_entity: {
+    "arc:on_interact_entity": {
         id: "arc:on_interact_entity",
         title: "On Interact Entity",
         emoji: "🖱️",
@@ -260,7 +260,7 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_kill_entity: {
+    "arc:on_kill_entity": {
         id: "arc:on_kill_entity",
         title: "On Kill Entity",
         emoji: "💀",
@@ -273,14 +273,14 @@ const actionTypesDefinition = {
             "arc:exp_drop",
         ],
     },
-    on_tame_animal: {
+    "arc:on_tame_animal": {
         id: "arc:on_tame_animal",
         title: "On Tame Animal",
         emoji: "🐾",
         category: "entities",
         producesData: ["arc:entity", "arc:block_position", "arc:world"],
     },
-    on_trade_with_villager: {
+    "arc:on_trade_with_villager": {
         id: "arc:on_trade_with_villager",
         title: "On Trade With Villager",
         emoji: "🤝",
@@ -292,14 +292,14 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_craft_item: {
+    "arc:on_craft_item": {
         id: "arc:on_craft_item",
         title: "On Craft Item",
         emoji: "🛠️",
         category: "items",
         producesData: ["arc:recipe", "arc:item", "arc:item_stack", "arc:world"],
     },
-    on_drop_item: {
+    "arc:on_drop_item": {
         id: "arc:on_drop_item",
         title: "On Drop Item",
         emoji: "🪣",
@@ -312,21 +312,21 @@ const actionTypesDefinition = {
             "arc:block_position",
         ],
     },
-    on_enchant_item: {
+    "arc:on_enchant_item": {
         id: "arc:on_enchant_item",
         title: "On Enchant Item",
         emoji: "✨",
         category: "items",
         producesData: ["arc:item_stack", "arc:exp_level"],
     },
-    on_fished_up_item: {
+    "arc:on_fished_up_item": {
         id: "arc:on_fished_up_item",
         title: "On Fished Up Item",
         emoji: "🎣",
         category: "items",
         producesData: ["arc:item_stack", "arc:item"],
     },
-    on_grind_item: {
+    "arc:on_grind_item": {
         id: "arc:on_grind_item",
         title: "On Grind Item",
         emoji: "⚙️",
@@ -339,7 +339,7 @@ const actionTypesDefinition = {
             "arc:exp_drop",
         ],
     },
-    on_hurt_item: {
+    "arc:on_hurt_item": {
         id: "arc:on_hurt_item",
         title: "On Hurt Item",
         emoji: "🗡️",
@@ -351,7 +351,7 @@ const actionTypesDefinition = {
             "arc:damage_amount",
         ],
     },
-    on_item_break: {
+    "arc:on_item_break": {
         id: "arc:on_item_break",
         title: "On Item Break",
         emoji: "💥",
@@ -363,7 +363,7 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_pickup_item: {
+    "arc:on_pickup_item": {
         id: "arc:on_pickup_item",
         title: "On Pickup Item",
         emoji: "🤲",
@@ -376,7 +376,7 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_smelt_item: {
+    "arc:on_smelt_item": {
         id: "arc:on_smelt_item",
         title: "On Smelt Item",
         emoji: "🔥",
@@ -389,21 +389,21 @@ const actionTypesDefinition = {
             "arc:recipe",
         ],
     },
-    on_throw_item: {
+    "arc:on_throw_item": {
         id: "arc:on_throw_item",
         title: "On Throw Item",
         emoji: "🏹",
         category: "items",
         producesData: ["arc:item_stack", "arc:entity", "arc:item", "arc:world"],
     },
-    on_use_item: {
+    "arc:on_use_item": {
         id: "arc:on_use_item",
         title: "On Use Item",
         emoji: "🖱️",
         category: "items",
         producesData: ["arc:item_stack", "arc:item", "arc:world", "arc:hand"],
     },
-    on_fill_bucket: {
+    "arc:on_fill_bucket": {
         id: "arc:on_fill_bucket",
         title: "On Fill Bucket",
         emoji: "🪣",
@@ -416,7 +416,7 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_empty_bucket: {
+    "arc:on_empty_bucket": {
         id: "arc:on_empty_bucket",
         title: "On Empty Bucket",
         emoji: "🪣",
@@ -429,154 +429,154 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_crouch: {
+    "arc:on_crouch": {
         id: "arc:on_crouch",
         title: "On Crouch",
         emoji: "🦶",
         category: "movement",
         producesData: ["arc:distance_in_cm", "arc:world", "arc:block_position"],
     },
-    on_crouch_start: {
+    "arc:on_crouch_start": {
         id: "arc:on_crouch_start",
         title: "On Start Crouching",
         emoji: "🦶",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_crouch_stop: {
+    "arc:on_crouch_stop": {
         id: "arc:on_crouch_stop",
         title: "On Stop Crouching",
         emoji: "🦶",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_elytra_fly: {
+    "arc:on_elytra_fly": {
         id: "arc:on_elytra_fly",
         title: "On Elytra Fly",
         emoji: "🪂",
         category: "movement",
         producesData: ["arc:distance_in_cm", "arc:world", "arc:block_position"],
     },
-    on_elytra_fly_start: {
+    "arc:on_elytra_fly_start": {
         id: "arc:on_elytra_fly_start",
         title: "On Start Elytra Flying",
         emoji: "🪂",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_elytra_fly_stop: {
+    "arc:on_elytra_fly_stop": {
         id: "arc:on_elytra_fly_stop",
         title: "On Stop Elytra Flying",
         emoji: "🪂",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_horse_ride: {
+    "arc:on_horse_ride": {
         id: "arc:on_horse_ride",
         title: "On Horse Ride",
         emoji: "🐎",
         category: "movement",
         producesData: ["arc:distance_in_cm", "arc:world", "arc:block_position"],
     },
-    on_horse_ride_start: {
+    "arc:on_horse_ride_start": {
         id: "arc:on_horse_ride_start",
         title: "On Start Horse Riding",
         emoji: "🐎",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_horse_ride_stop: {
+    "arc:on_horse_ride_stop": {
         id: "arc:on_horse_ride_stop",
         title: "On Stop Horse Riding",
         emoji: "🐎",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_sprint: {
+    "arc:on_sprint": {
         id: "arc:on_sprint",
         title: "On Sprint",
         emoji: "🏃‍♂️",
         category: "movement",
         producesData: ["arc:distance_in_cm", "arc:world", "arc:block_position"],
     },
-    on_sprint_start: {
+    "arc:on_sprint_start": {
         id: "arc:on_sprint_start",
         title: "On Start Sprinting",
         emoji: "🏃‍♂️",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_sprint_stop: {
+    "arc:on_sprint_stop": {
         id: "arc:on_sprint_stop",
         title: "On Stop Sprinting",
         emoji: "🏃‍♂️",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_swim: {
+    "arc:on_swim": {
         id: "arc:on_swim",
         title: "On Swim",
         emoji: "🏊‍♂️",
         category: "movement",
         producesData: ["arc:distance_in_cm", "arc:world", "arc:block_position"],
     },
-    on_swim_start: {
+    "arc:on_swim_start": {
         id: "arc:on_swim_start",
         title: "On Start Swimming",
         emoji: "🏊‍♂️",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_swim_stop: {
+    "arc:on_swim_stop": {
         id: "arc:on_swim_stop",
         title: "On Stop Swimming",
         emoji: "🏊‍♂️",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_walk: {
+    "arc:on_walk": {
         id: "arc:on_walk",
         title: "On Walk",
         emoji: "🚶‍♂️",
         category: "movement",
         producesData: ["arc:distance_in_cm", "arc:world", "arc:block_position"],
     },
-    on_walk_start: {
+    "arc:on_walk_start": {
         id: "arc:on_walk_start",
         title: "On Start Walking",
         emoji: "🚶‍♂️",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_walk_stop: {
+    "arc:on_walk_stop": {
         id: "arc:on_walk_stop",
         title: "On Stop Walking",
         emoji: "🚶‍♂️",
         category: "movement",
         producesData: ["arc:world", "arc:block_position"],
     },
-    on_jump: {
+    "arc:on_jump": {
         id: "arc:on_jump",
         title: "On Jump",
         emoji: "🦘",
         category: "movement",
         producesData: ["arc:block_position", "arc:world"],
     },
-    on_land: {
+    "arc:on_land": {
         id: "arc:on_land",
         title: "On Land",
         emoji: "🦶",
         category: "movement",
         producesData: ["arc:fall_distance", "arc:block_position", "arc:world"],
     },
-    on_change_dimension: {
+    "arc:on_change_dimension": {
         id: "arc:on_change_dimension",
         title: "On Change Dimension",
         emoji: "🌍",
         category: "movement",
         producesData: ["arc:from_dimension", "arc:to_dimension", "arc:world"],
     },
-    on_brew_potion: {
+    "arc:on_brew_potion": {
         id: "arc:on_brew_potion",
         title: "On Brew Potion",
         emoji: "🧪",
@@ -588,7 +588,7 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_drink: {
+    "arc:on_drink": {
         id: "arc:on_drink",
         title: "On Drink",
         emoji: "🥤",
@@ -600,7 +600,7 @@ const actionTypesDefinition = {
             "arc:block_position",
         ],
     },
-    on_eat: {
+    "arc:on_eat": {
         id: "arc:on_eat",
         title: "On Eat",
         emoji: "🍽️",
@@ -612,7 +612,7 @@ const actionTypesDefinition = {
             "arc:block_position",
         ],
     },
-    on_effect_added: {
+    "arc:on_add_effect": {
         id: "arc:on_add_effect",
         title: "On Effect Added",
         emoji: "💉",
@@ -624,7 +624,7 @@ const actionTypesDefinition = {
             "arc:block_position",
         ],
     },
-    on_get_attack_speed: {
+    "arc:on_get_attack_speed": {
         id: "arc:on_get_attack_speed",
         title: "On Get Attack Speed",
         emoji: "⚔️",
@@ -636,7 +636,7 @@ const actionTypesDefinition = {
             "arc:block_position",
         ],
     },
-    on_rod_reel_in: {
+    "arc:on_rod_reel_in": {
         id: "arc:on_rod_reel_in",
         title: "On Rod Reel In",
         emoji: "🎣",
@@ -648,7 +648,7 @@ const actionTypesDefinition = {
             "arc:world",
         ],
     },
-    on_shoot_projectile: {
+    "arc:on_shoot_projectile": {
         id: "arc:on_shoot_projectile",
         title: "On Shoot Projectile",
         emoji: "🏹",
@@ -660,7 +660,7 @@ const actionTypesDefinition = {
             "arc:block_position",
         ],
     },
-    on_strip_log: {
+    "arc:on_strip_log": {
         id: "arc:on_strip_log",
         title: "On Strip Log",
         emoji: "🪵",
@@ -674,7 +674,7 @@ const actionTypesDefinition = {
             "arc:hand",
         ],
     },
-    on_use_anvil: {
+    "arc:on_use_anvil": {
         id: "arc:on_use_anvil",
         title: "On Use Anvil",
         emoji: "⚒️",
@@ -687,7 +687,7 @@ const actionTypesDefinition = {
             "arc:exp_level",
         ],
     },
-    on_block_with_shield: {
+    "arc:on_block_with_shield": {
         id: "arc:on_block_with_shield",
         title: "On Block With Shield",
         emoji: "🛡️",
@@ -701,14 +701,14 @@ const actionTypesDefinition = {
         ],
     },
     // JobsPlus Actions
-    on_job_exp: {
+    "jobsplus:on_job_exp": {
         id: "jobsplus:on_job_exp",
         title: "On Job Experience",
         emoji: "💼",
         category: "jobsplus",
         producesData: ["jobsplus:job_exp", "jobsplus:only_for_job"],
     },
-    on_job_level_up: {
+    "jobsplus:on_job_level_up": {
         id: "jobsplus:on_job_level_up",
         title: "On Job Level Up",
         emoji: "🆙",
@@ -748,14 +748,14 @@ export type ConditionType = {
             readonly typeURL?: string;
         }[];
         readonly required: boolean;
-        readonly default?: string | number | boolean;
+        readonly default?: string | number | boolean | string[];
         readonly description: string;
     }[];
 } & SidebarItem;
 
 export const conditionTypesDefinition = {
     // Arc Conditions
-    block: {
+    "arc:block": {
         id: "arc:block",
         title: "Block",
         emoji: "🧱",
@@ -776,7 +776,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    block_hardness: {
+    "arc:block_hardness": {
         id: "arc:block_hardness",
         title: "Block Hardness",
         emoji: "🪨",
@@ -801,7 +801,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    blocks: {
+    "arc:blocks": {
         id: "arc:blocks",
         title: "Blocks",
         emoji: "🧱🧱",
@@ -817,7 +817,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    crop_age: {
+    "arc:crop_age": {
         id: "arc:crop_age",
         title: "Crop Age",
         emoji: "🌱",
@@ -833,7 +833,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    crop_fully_grown: {
+    "arc:crop_fully_grown": {
         id: "arc:crop_fully_grown",
         title: "Crop Fully Grown",
         emoji: "🌾",
@@ -842,7 +842,7 @@ export const conditionTypesDefinition = {
             action.producesData.includes("arc:block_state"),
         parameters: [],
     },
-    is_ore: {
+    "arc:is_ore": {
         id: "arc:is_ore",
         title: "Is Ore",
         emoji: "💎",
@@ -851,7 +851,7 @@ export const conditionTypesDefinition = {
             action.producesData.includes("arc:block_state"),
         parameters: [],
     },
-    not_in_block_pos_cache: {
+    "arc:not_in_block_pos_cache": {
         id: "arc:not_in_block_pos_cache",
         title: "Not In Block Pos Cache",
         emoji: "❌🧱",
@@ -860,7 +860,7 @@ export const conditionTypesDefinition = {
             action.producesData.includes("arc:block_position"),
         parameters: [],
     },
-    effect: {
+    "arc:effect": {
         id: "arc:effect",
         title: "Effect",
         emoji: "💉",
@@ -881,7 +881,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    effect_category: {
+    "arc:effect_category": {
         id: "arc:effect_category",
         title: "Effect Category",
         emoji: "💉",
@@ -903,7 +903,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    damage_source: {
+    "arc:damage_source": {
         id: "arc:damage_source",
         title: "Damage Source",
         emoji: "💥",
@@ -919,7 +919,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    entity_in_block: {
+    "arc:entity_in_block": {
         id: "arc:entity_in_block",
         title: "Entity In Block",
         emoji: "👤🧱",
@@ -941,7 +941,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    entity_type: {
+    "arc:entity_type": {
         id: "arc:entity_type",
         title: "Entity Type",
         emoji: "👤",
@@ -962,7 +962,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    entity_types: {
+    "arc:entity_types": {
         id: "arc:entity_types",
         title: "Entity Types",
         emoji: "👥",
@@ -983,7 +983,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    ready_for_shearing: {
+    "arc:ready_for_shearing": {
         id: "arc:ready_for_shearing",
         title: "Ready For Shearing",
         emoji: "✂️🐑",
@@ -992,7 +992,7 @@ export const conditionTypesDefinition = {
             action.producesData.includes("arc:entity"),
         parameters: [],
     },
-    entity_data: {
+    "arc:entity_data": {
         id: "arc:entity_data",
         title: "Entity Data",
         emoji: "📊",
@@ -1015,7 +1015,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    on_fire: {
+    "arc:on_fire": {
         id: "arc:on_fire",
         title: "On Fire",
         emoji: "🔥",
@@ -1023,7 +1023,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    health: {
+    "arc:health": {
         id: "arc:health",
         title: "Health",
         emoji: "❤️",
@@ -1052,7 +1052,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    food_level: {
+    "arc:food_level": {
         id: "arc:food_level",
         title: "Food Level",
         emoji: "🍗",
@@ -1074,7 +1074,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    saturation_level: {
+    "arc:saturation_level": {
         id: "arc:saturation_level",
         title: "Saturation Level",
         emoji: "🍖",
@@ -1096,7 +1096,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    is_wet: {
+    "arc:is_wet": {
         id: "arc:is_wet",
         title: "Is Wet",
         emoji: "💧",
@@ -1104,7 +1104,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    is_underwater: {
+    "arc:is_underwater": {
         id: "arc:is_underwater",
         title: "Is Underwater",
         emoji: "🌊",
@@ -1112,7 +1112,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    is_sleeping: {
+    "arc:is_sleeping": {
         id: "arc:is_sleeping",
         title: "Is Sleeping",
         emoji: "😴",
@@ -1120,7 +1120,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    is_sneaking: {
+    "arc:is_sneaking": {
         id: "arc:is_sneaking",
         title: "Is Sneaking",
         emoji: "👟",
@@ -1128,7 +1128,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    is_blocking: {
+    "arc:is_blocking": {
         id: "arc:is_blocking",
         title: "Is Blocking",
         emoji: "🛡️",
@@ -1136,7 +1136,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    is_riding: {
+    "arc:is_riding": {
         id: "arc:is_riding",
         title: "Is Riding",
         emoji: "🐎",
@@ -1144,7 +1144,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    riding_entity_type: {
+    "arc:riding_entity_type": {
         id: "arc:riding_entity_type",
         title: "Riding Entity Type",
         emoji: "🏇",
@@ -1159,7 +1159,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    hand: {
+    "arc:hand": {
         id: "arc:hand",
         title: "Hand",
         emoji: "✋",
@@ -1175,7 +1175,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    exp_drop: {
+    "arc:exp_drop": {
         id: "arc:exp_drop",
         title: "Experience Drop",
         emoji: "💰",
@@ -1197,7 +1197,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    exp_level: {
+    "arc:exp_level": {
         id: "arc:exp_level",
         title: "Experience Level",
         emoji: "📈",
@@ -1213,7 +1213,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    item: {
+    "arc:item": {
         id: "arc:item",
         title: "Item",
         emoji: "🪙",
@@ -1242,7 +1242,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    item_equipped: {
+    "arc:item_equipped": {
         id: "arc:item_equipped",
         title: "Item Equipped",
         emoji: "🪙✅",
@@ -1262,7 +1262,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    item_in_hand: {
+    "arc:item_in_hand": {
         id: "arc:item_in_hand",
         title: "Item In Hand",
         emoji: "🪙✋",
@@ -1294,7 +1294,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    item_in_inventory: {
+    "arc:item_in_inventory": {
         id: "arc:item_in_inventory",
         title: "Item In Inventory",
         emoji: "🪙📦",
@@ -1314,7 +1314,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    items: {
+    "arc:items": {
         id: "arc:items",
         title: "Items",
         emoji: "🪙🪙",
@@ -1331,7 +1331,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    inventory_full: {
+    "arc:inventory_full": {
         id: "arc:inventory_full",
         title: "Inventory Full",
         emoji: "🈵",
@@ -1339,7 +1339,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    inventory_empty: {
+    "arc:inventory_empty": {
         id: "arc:inventory_empty",
         title: "Inventory Empty",
         emoji: "🈳",
@@ -1347,7 +1347,7 @@ export const conditionTypesDefinition = {
         isActionCompatible: () => true,
         parameters: [],
     },
-    item_durability: {
+    "arc:item_durability": {
         id: "arc:item_durability",
         title: "Item Durability",
         emoji: "🛠️",
@@ -1377,7 +1377,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    has_enchantment: {
+    "arc:has_enchantment": {
         id: "arc:has_enchantment",
         title: "Has Enchantment",
         emoji: "✨",
@@ -1400,7 +1400,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    full_armor_set: {
+    "arc:full_armor_set": {
         id: "arc:full_armor_set",
         title: "Full Armor Set",
         emoji: "🛡️",
@@ -1422,7 +1422,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    distance: {
+    "arc:distance": {
         id: "arc:distance",
         title: "Distance",
         emoji: "📏",
@@ -1438,7 +1438,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    not: {
+    "arc:not": {
         id: "arc:not",
         title: "Not",
         emoji: "🚫",
@@ -1458,7 +1458,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    or: {
+    "arc:or": {
         id: "arc:or",
         title: "Or",
         emoji: "🔀",
@@ -1478,7 +1478,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    chance: {
+    "arc:chance": {
         id: "arc:chance",
         title: "Chance",
         emoji: "🎲",
@@ -1493,7 +1493,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    is_blasting_recipe: {
+    "arc:is_blasting_recipe": {
         id: "arc:is_blasting_recipe",
         title: "Is Blasting Recipe",
         emoji: "🔥💎",
@@ -1502,7 +1502,7 @@ export const conditionTypesDefinition = {
             action.producesData.includes("arc:recipe"),
         parameters: [],
     },
-    is_smoking_recipe: {
+    "arc:is_smoking_recipe": {
         id: "arc:is_smoking_recipe",
         title: "Is Smoking Recipe",
         emoji: "🔥🍖",
@@ -1511,7 +1511,7 @@ export const conditionTypesDefinition = {
             action.producesData.includes("arc:recipe"),
         parameters: [],
     },
-    scoreboard: {
+    "arc:scoreboard": {
         id: "arc:scoreboard",
         title: "Scoreboard",
         emoji: "📋",
@@ -1538,7 +1538,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    team: {
+    "arc:team": {
         id: "arc:team",
         title: "Team",
         emoji: "👥",
@@ -1553,7 +1553,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    dimension: {
+    "arc:dimension": {
         id: "arc:dimension",
         title: "Dimension",
         emoji: "🌍",
@@ -1568,7 +1568,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    y_level: {
+    "arc:y_level": {
         id: "arc:y_level",
         title: "Y Level",
         emoji: "↕️",
@@ -1589,7 +1589,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    time_of_day: {
+    "arc:time_of_day": {
         id: "arc:time_of_day",
         title: "Time Of Day",
         emoji: "⏰",
@@ -1610,7 +1610,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    weather: {
+    "arc:weather": {
         id: "arc:weather",
         title: "Weather",
         emoji: "🌦️",
@@ -1625,7 +1625,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    light_level: {
+    "arc:light_level": {
         id: "arc:light_level",
         title: "Light Level",
         emoji: "💡",
@@ -1647,7 +1647,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    biome: {
+    "arc:biome": {
         id: "arc:biome",
         title: "Biome",
         emoji: "🌲",
@@ -1662,7 +1662,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    structure: {
+    "arc:structure": {
         id: "arc:structure",
         title: "Structure",
         emoji: "🏰",
@@ -1677,7 +1677,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    critical_hit: {
+    "arc:critical_hit": {
         id: "arc:critical_hit",
         title: "Critical Hit",
         emoji: "💥",
@@ -1686,7 +1686,7 @@ export const conditionTypesDefinition = {
             action.producesData.includes("arc:is_critical_hit"),
         parameters: [],
     },
-    target_health: {
+    "arc:target_health": {
         id: "arc:target_health",
         title: "Target Health",
         emoji: "🎯",
@@ -1717,7 +1717,7 @@ export const conditionTypesDefinition = {
         ],
     },
     // JobsPlus Conditions
-    job_experience_percentage: {
+    "jobsplus:job_experience_percentage": {
         id: "jobsplus:job_experience_percentage",
         title: "Job Experience Percentage",
         emoji: "📊",
@@ -1733,7 +1733,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    job_level: {
+    "jobsplus:job_level": {
         id: "jobsplus:job_level",
         title: "Job Level",
         emoji: "🆙",
@@ -1754,7 +1754,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    powerup_not_active: {
+    "jobsplus:powerup_not_active": {
         id: "jobsplus:powerup_not_active",
         title: "Powerup Not Active",
         emoji: "🚫⚡",
@@ -1769,7 +1769,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    has_job: {
+    "jobsplus:has_job": {
         id: "jobsplus:has_job",
         title: "Has Job",
         emoji: "💼",
@@ -1784,7 +1784,7 @@ export const conditionTypesDefinition = {
             },
         ],
     },
-    has_powerup_activated: {
+    "jobsplus:has_powerup_activated": {
         id: "jobsplus:has_powerup_activated",
         title: "Has Powerup Activated",
         emoji: "⚡✅",
@@ -1830,14 +1830,14 @@ export type RewardType = {
             readonly typeURL?: string;
         }[];
         readonly required: boolean;
-        readonly default?: string | number | boolean;
+        readonly default?: string | number | boolean | string[];
         readonly description: string;
     }[];
 } & SidebarItem;
 
 export const rewardTypesDefinition = {
     // Arc Rewards
-    block_drop_multiplier: {
+    "arc:block_drop_multiplier": {
         id: "arc:block_drop_multiplier",
         title: "Block Drop Multiplier",
         emoji: "🧱",
@@ -1854,13 +1854,13 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    destroy_speed_multiplier: {
+    "arc:destroy_speed_multiplier": {
         id: "arc:destroy_speed_multiplier",
         title: "Destroy Speed Multiplier",
         emoji: "⚡",
         category: "blocks",
         isActionCompatible: (action: ActionType) =>
-            action.id === "on_get_destroy_speed",
+            action.id === "arc:on_get_destroy_speed",
         parameters: [
             {
                 name: "multiplier",
@@ -1870,34 +1870,34 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    cancel_action: {
+    "arc:cancel_action": {
         id: "arc:cancel_action",
         title: "Cancel Action",
         emoji: "❌",
         category: "none",
         isActionCompatible: (action: ActionType) => {
             const allowedActions: ActionTypesKeys[] = [
-                "on_place_block",
-                "on_break_block",
-                "on_interact_block",
-                "on_harvest_crop",
-                "on_plant_crop",
-                "on_tame_animal",
-                "on_breed_animal",
-                "on_interact_entity",
-                "on_hurt_entity",
-                "on_hurt_item",
-                "on_hurt_player",
-                "on_effect_added",
-                "on_get_hurt",
-                "on_use_item",
-                "on_empty_bucket",
+                "arc:on_place_block",
+                "arc:on_break_block",
+                "arc:on_interact_block",
+                "arc:on_harvest_crop",
+                "arc:on_plant_crop",
+                "arc:on_tame_animal",
+                "arc:on_breed_animal",
+                "arc:on_interact_entity",
+                "arc:on_hurt_entity",
+                "arc:on_hurt_item",
+                "arc:on_hurt_player",
+                "arc:on_add_effect",
+                "arc:on_get_hurt",
+                "arc:on_use_item",
+                "arc:on_empty_bucket",
             ];
             return allowedActions.includes(action.id as any);
         },
         parameters: [],
     },
-    effect: {
+    "arc:effect": {
         id: "arc:effect",
         title: "Potion Effect",
         emoji: "💉",
@@ -1930,7 +1930,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    effect_amplifier_addition: {
+    "arc:effect_amplifier_addition": {
         id: "arc:effect_amplifier_addition",
         title: "Effect Amplifier Addition",
         emoji: "➕💉",
@@ -1946,7 +1946,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    effect_duration_multiplier: {
+    "arc:effect_duration_multiplier": {
         id: "arc:effect_duration_multiplier",
         title: "Effect Duration Multiplier",
         emoji: "⏳💉",
@@ -1962,7 +1962,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    remove_effect: {
+    "arc:remove_effect": {
         id: "arc:remove_effect",
         title: "Remove Effect",
         emoji: "❌💉",
@@ -1971,7 +1971,7 @@ export const rewardTypesDefinition = {
             action.producesData.includes("arc:mob_effect_instance"),
         parameters: [],
     },
-    cleanse_effects: {
+    "arc:cleanse_effects": {
         id: "arc:cleanse_effects",
         title: "Cleanse Effects",
         emoji: "🧼",
@@ -1998,15 +1998,15 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    damage_multiplier: {
+    "arc:damage_multiplier": {
         id: "arc:damage_multiplier",
         title: "Damage Multiplier",
         emoji: "⚔️",
         category: "entities",
         isActionCompatible: (action: ActionType) =>
-            action.id === "on_get_hurt" ||
-            action.id === "on_hurt_player" ||
-            action.id === "on_hurt_entity",
+            action.id === "arc:on_get_hurt" ||
+            action.id === "arc:on_hurt_player" ||
+            action.id === "arc:on_hurt_entity",
         parameters: [
             {
                 name: "multiplier",
@@ -2016,7 +2016,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    entity_on_fire: {
+    "arc:entity_on_fire": {
         id: "arc:entity_on_fire",
         title: "Entity On Fire",
         emoji: "🔥👤",
@@ -2032,7 +2032,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    multiple_arrows: {
+    "arc:multiple_arrows": {
         id: "arc:multiple_arrows",
         title: "Multiple Arrows",
         emoji: "➡️➡️",
@@ -2048,7 +2048,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    move_to_entity: {
+    "arc:move_to_entity": {
         id: "arc:move_to_entity",
         title: "Move To Entity",
         emoji: "👤➡️",
@@ -2064,7 +2064,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    spawn_entity: {
+    "arc:spawn_entity": {
         id: "arc:spawn_entity",
         title: "Spawn Entity",
         emoji: "🦕",
@@ -2086,7 +2086,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    disarm_entity: {
+    "arc:disarm_entity": {
         id: "arc:disarm_entity",
         title: "Disarm Entity",
         emoji: "✋❌",
@@ -2110,7 +2110,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    freeze_entity: {
+    "arc:freeze_entity": {
         id: "arc:freeze_entity",
         title: "Freeze Entity",
         emoji: "🧊",
@@ -2127,7 +2127,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    pull_entity: {
+    "arc:pull_entity": {
         id: "arc:pull_entity",
         title: "Pull Entity",
         emoji: "🧲",
@@ -2144,7 +2144,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    push_entity: {
+    "arc:push_entity": {
         id: "arc:push_entity",
         title: "Push Entity",
         emoji: "🌬️",
@@ -2161,7 +2161,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    exp: {
+    "arc:exp": {
         id: "arc:exp",
         title: "Experience",
         emoji: "✨",
@@ -2182,7 +2182,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    exp_multiplier: {
+    "arc:exp_multiplier": {
         id: "arc:exp_multiplier",
         title: "Experience Multiplier",
         emoji: "✨➕",
@@ -2199,7 +2199,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    drop_item: {
+    "arc:drop_item": {
         id: "arc:drop_item",
         title: "Drop Item",
         emoji: "🪙",
@@ -2220,7 +2220,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    item: {
+    "arc:item": {
         id: "arc:item",
         title: "Item",
         emoji: "🪙",
@@ -2240,7 +2240,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    give_recipes: {
+    "arc:give_recipes": {
         id: "arc:give_recipes",
         title: "Give Recipes",
         emoji: "📜",
@@ -2255,7 +2255,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    repair_held_item: {
+    "arc:repair_held_item": {
         id: "arc:repair_held_item",
         title: "Repair Held Item",
         emoji: "🔧",
@@ -2284,7 +2284,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    repair_all_armor: {
+    "arc:repair_all_armor": {
         id: "arc:repair_all_armor",
         title: "Repair All Armor",
         emoji: "🛡️🔧",
@@ -2306,7 +2306,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    smelt_inventory: {
+    "arc:smelt_inventory": {
         id: "arc:smelt_inventory",
         title: "Smelt Inventory",
         emoji: "🔥🎒",
@@ -2317,12 +2317,12 @@ export const rewardTypesDefinition = {
                 name: "recipes",
                 types: [{ type: "Identifier[]" }],
                 required: false,
-                default: [],
+                default: [] as string[],
                 description: "Specific recipes to smelt (empty for all).",
             },
         ],
     },
-    enchant_item: {
+    "arc:enchant_item": {
         id: "arc:enchant_item",
         title: "Enchant Item",
         emoji: "✨🗡️",
@@ -2343,13 +2343,13 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    attack_speed_multiplier: {
+    "arc:attack_speed_multiplier": {
         id: "arc:attack_speed_multiplier",
         title: "Attack Speed Multiplier",
         emoji: "⚡",
         category: "players",
         isActionCompatible: (action: ActionType) =>
-            action.id === "on_get_attack_speed",
+            action.id === "arc:on_get_attack_speed",
         parameters: [
             {
                 name: "multiplier",
@@ -2359,7 +2359,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    heal: {
+    "arc:heal": {
         id: "arc:heal",
         title: "Heal",
         emoji: "❤️",
@@ -2381,7 +2381,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    feed: {
+    "arc:feed": {
         id: "arc:feed",
         title: "Feed",
         emoji: "🍗",
@@ -2404,7 +2404,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    launch_player: {
+    "arc:launch_player": {
         id: "arc:launch_player",
         title: "Launch Player",
         emoji: "🚀",
@@ -2434,7 +2434,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    teleport_player: {
+    "arc:teleport_player": {
         id: "arc:teleport_player",
         title: "Teleport Player",
         emoji: "🌌",
@@ -2449,7 +2449,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    command: {
+    "arc:command": {
         id: "arc:command",
         title: "Command",
         emoji: "💻",
@@ -2464,7 +2464,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    create_explosion: {
+    "arc:create_explosion": {
         id: "arc:create_explosion",
         title: "Create Explosion",
         emoji: "💣",
@@ -2493,7 +2493,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    set_block: {
+    "arc:set_block": {
         id: "arc:set_block",
         title: "Set Block",
         emoji: "🧱",
@@ -2508,7 +2508,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    strike_lightning: {
+    "arc:strike_lightning": {
         id: "arc:strike_lightning",
         title: "Strike Lightning",
         emoji: "⚡",
@@ -2530,7 +2530,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    change_weather: {
+    "arc:change_weather": {
         id: "arc:change_weather",
         title: "Change Weather",
         emoji: "☀️",
@@ -2552,7 +2552,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    change_time: {
+    "arc:change_time": {
         id: "arc:change_time",
         title: "Change Time",
         emoji: "⏰",
@@ -2575,7 +2575,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    play_sound: {
+    "arc:play_sound": {
         id: "arc:play_sound",
         title: "Play Sound",
         emoji: "🎵",
@@ -2619,7 +2619,7 @@ export const rewardTypesDefinition = {
         ],
     },
     // JobsPlus Rewards
-    job_exp: {
+    "jobsplus:job_exp": {
         id: "jobsplus:job_exp",
         title: "Job Exp",
         emoji: "💼",
@@ -2640,7 +2640,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    job_exp_multiplier: {
+    "jobsplus:job_exp_multiplier": {
         id: "jobsplus:job_exp_multiplier",
         title: "Job Exp Multiplier",
         emoji: "💼✖️",
@@ -2661,7 +2661,7 @@ export const rewardTypesDefinition = {
             },
         ],
     },
-    job_coin: {
+    "jobsplus:job_coin": {
         id: "jobsplus:job_coin",
         title: "Job Coin",
         emoji: "🪙",
