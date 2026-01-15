@@ -2,6 +2,7 @@ import { useStore } from "@/store/store";
 import AddProjectDialog from "../projects/add-project-dialog";
 import OpenProjectDialog from "../projects/open-project-dialog";
 import { Button } from "../ui/button";
+import ImportProjectButton from "../projects/import-project-button";
 
 const NoProjectSelected = () => {
     const { projects, selectProject } = useStore();
@@ -22,7 +23,7 @@ const NoProjectSelected = () => {
                 >
                     <AddProjectDialog />
                     <OpenProjectDialog />
-                    <Button className="justify-start">Import Project</Button>
+                    <ImportProjectButton />
                 </div>
                 <div id="projects" className="flex flex-col gap-1">
                     <h4>Recent Projects</h4>
