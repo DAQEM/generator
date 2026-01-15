@@ -52,7 +52,7 @@ export const exportProject = async (project: Project) => {
             const conditions = action.conditions
                 .map((c) => flattenData(c))
                 .map((c) => {
-                    c.type = "arc:" + c.type;
+                    c.type = c.type;
                     return c;
                 });
 
@@ -69,7 +69,7 @@ export const exportProject = async (project: Project) => {
                     type: "jobsplus:job",
                     id: fullJobId,
                 },
-                type: "arc:" + action.type,
+                type: action.type,
                 conditions: conditions.length > 0 ? conditions : undefined,
                 rewards: actionRewards.length > 0 ? actionRewards : undefined,
                 ...action.data,
