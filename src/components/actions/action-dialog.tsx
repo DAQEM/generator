@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import AddConditionDialog from "../conditions/add-condition-dialog";
 import AdvancedConditionCard from "../conditions/advanced-condition-card";
@@ -47,24 +48,39 @@ interface Props {
 }
 
 // Reusable schema for validating strings as positive numbers
-const numericStringSchema = z.string()
+const numericStringSchema = z
+    .string()
     .trim()
     .min(1, "Experience is required")
-    .refine((val) => !isNaN(Number(val)) && val !== "", "Must be a valid number")
+    .refine(
+        (val) => !isNaN(Number(val)) && val !== "",
+        "Must be a valid number"
+    )
     .refine((val) => Number(val) >= 0, "Experience cannot be negative");
 
-const formSchema = z.object({
-    type: z.string().min(1, "Action type is required"),
-    min_experience: numericStringSchema,
-    max_experience: numericStringSchema,
-}).refine((data) => Number(data.max_experience) >= Number(data.min_experience), {
-    message: "Max experience must be >= min experience",
-    path: ["max_experience"],
-});
+const formSchema = z
+    .object({
+        type: z.string().min(1, "Action type is required"),
+        min_experience: numericStringSchema,
+        max_experience: numericStringSchema,
+    })
+    .refine(
+        (data) => Number(data.max_experience) >= Number(data.min_experience),
+        {
+            message: "Max experience must be >= min experience",
+            path: ["max_experience"],
+        }
+    );
 
 type FormValues = z.infer<typeof formSchema>;
 
-const ActionDialog = ({ isOpen, onClose, actionToEdit, projectId, jobId }: Props) => {
+const ActionDialog = ({
+    isOpen,
+    onClose,
+    actionToEdit,
+    projectId,
+    jobId,
+}: Props) => {
     const { addAction, updateAction } = useStore();
     const [conditions, setConditions] = useState<JobCondition[]>([]);
     const isEditMode = !!actionToEdit;
@@ -115,14 +131,11 @@ const ActionDialog = ({ isOpen, onClose, actionToEdit, projectId, jobId }: Props
         };
 
         if (isEditMode && actionToEdit) {
-            updateAction(
-                projectId,
-                jobId,
-                actionToEdit.id,
-                payload
-            );
+            updateAction(projectId, jobId, actionToEdit.id, payload);
+            toast.success("Action updated successfully");
         } else {
             addAction(projectId, jobId, payload);
+            toast.success("Action added successfully");
         }
 
         handleClose();
@@ -144,8 +157,8 @@ const ActionDialog = ({ isOpen, onClose, actionToEdit, projectId, jobId }: Props
                 aria-describedby={undefined}
             >
                 <Form {...form}>
-                    <form 
-                        onSubmit={form.handleSubmit(onSubmit)} 
+                    <form
+                        onSubmit={form.handleSubmit(onSubmit)}
                         className="grid grid-cols-3 h-full overflow-hidden w-full"
                     >
                         <div className="col-span-1 bg-neutral-100 p-4 flex flex-col gap-4 overflow-y-auto border-r">
@@ -174,28 +187,51 @@ const ActionDialog = ({ isOpen, onClose, actionToEdit, projectId, jobId }: Props
                                             <SelectContent position="item-aligned">
                                                 {Object.entries(
                                                     Object.groupBy(
-                                                        Object.entries(actionTypes),
-                                                        ([, value]) => value.category
+                                                        Object.entries(
+                                                            actionTypes
+                                                        ),
+                                                        ([, value]) =>
+                                                            value.category
                                                     )
                                                 )
-                                                    .sort(([a], [b]) => a.localeCompare(b))
-                                                    .map(([category, actions]) => (
-                                                        <SelectGroup key={category}>
-                                                            <SelectLabel>
-                                                                {_.startCase(category)}
-                                                            </SelectLabel>
-                                                            {actions?.map(
-                                                                ([key, value]) => (
-                                                                    <SelectItem
-                                                                        key={key}
-                                                                        value={key}
-                                                                    >
-                                                                        {value.title}
-                                                                    </SelectItem>
-                                                                )
-                                                            )}
-                                                        </SelectGroup>
-                                                    ))}
+                                                    .sort(([a], [b]) =>
+                                                        a.localeCompare(b)
+                                                    )
+                                                    .map(
+                                                        ([
+                                                            category,
+                                                            actions,
+                                                        ]) => (
+                                                            <SelectGroup
+                                                                key={category}
+                                                            >
+                                                                <SelectLabel>
+                                                                    {_.startCase(
+                                                                        category
+                                                                    )}
+                                                                </SelectLabel>
+                                                                {actions?.map(
+                                                                    ([
+                                                                        key,
+                                                                        value,
+                                                                    ]) => (
+                                                                        <SelectItem
+                                                                            key={
+                                                                                key
+                                                                            }
+                                                                            value={
+                                                                                key
+                                                                            }
+                                                                        >
+                                                                            {
+                                                                                value.title
+                                                                            }
+                                                                        </SelectItem>
+                                                                    )
+                                                                )}
+                                                            </SelectGroup>
+                                                        )
+                                                    )}
                                             </SelectContent>
                                         </Select>
                                         <FormMessage />

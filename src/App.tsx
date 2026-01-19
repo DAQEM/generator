@@ -3,6 +3,7 @@ import Layout from "./components/layout/layout";
 import NoProjectSelected from "./components/layout/no-project-selected";
 import Navbar from "./components/navigation/navbar";
 import ProjectView from "./components/projects/project-view";
+import { Toaster } from "./components/ui/sonner";
 import { useStore } from "./store/store";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
 
     return (
         <Layout>
+            <Toaster />
             <Navbar />
             {currentProjectId ? (
                 currentJobId ? (

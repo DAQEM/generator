@@ -3,6 +3,7 @@ import type { Job } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "../ui/button";
 import { ColorPicker } from "../ui/color-picker";
@@ -88,8 +89,10 @@ const JobDialog = ({ isOpen, onClose, jobToEdit }: Props) => {
 
         if (isEditMode && jobToEdit) {
             updateJob(currentProjectId!, jobToEdit.id, payload);
+            toast.success("Job updated successfully");
         } else {
             addJob(currentProjectId!, payload);
+            toast.success("Job added successfully");
         }
 
         handleClose();

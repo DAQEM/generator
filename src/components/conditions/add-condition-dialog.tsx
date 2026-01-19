@@ -28,14 +28,16 @@ const AddConditionDialog = ({
     const [open, setOpen] = useState(false);
     const compatibleConditions = Object.entries(conditionTypes).filter(
         ([, condition]) => {
-            return condition.isActionCompatible(actionTypes[actionType]);
-        }
+            const action = actionTypes[actionType];
+            if (!action) return false;
+            return condition.isActionCompatible(action);
+        },
     );
     const filteredConditions = query
         ? compatibleConditions.filter(
               ([key, condition]) =>
                   condition.title.toLowerCase().includes(query.toLowerCase()) ||
-                  key.toLowerCase().includes(query.toLowerCase())
+                  key.toLowerCase().includes(query.toLowerCase()),
           )
         : compatibleConditions;
 

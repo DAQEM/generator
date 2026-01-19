@@ -2,6 +2,7 @@ import { useStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "../ui/button";
 import {
@@ -40,6 +41,7 @@ const AddProjectDialog = () => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         addProject(values.name);
+        toast.success("Project created successfully");
         setOpen(false);
         form.reset();
     }

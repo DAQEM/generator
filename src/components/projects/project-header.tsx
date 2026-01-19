@@ -3,9 +3,10 @@ import type { Project } from "@/types";
 
 type Props = {
     children?: React.ReactNode;
+    backButton?: React.ReactNode;
 };
 
-const ProjectHeader = ({ children }: Props) => {
+const ProjectHeader = ({ children, backButton }: Props) => {
     const { getCurrentProject } = useStore();
     const project: Project | undefined = getCurrentProject();
 
@@ -13,8 +14,9 @@ const ProjectHeader = ({ children }: Props) => {
 
     return (
         <div className="flex justify-between items-center mb-8">
-            <div>
-                <h2 className="text-3xl font-bold font-heading">
+            <div className="flex items-end gap-4">
+                {backButton}
+                <h2 className="text-3xl font-bold font-heading leading-10">
                     {project.name}
                 </h2>
             </div>

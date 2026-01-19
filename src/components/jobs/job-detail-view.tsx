@@ -2,7 +2,7 @@ import { useStore } from "@/store/store";
 import { useState } from "react";
 
 import type { JobAction } from "@/types";
-import { Plus } from "lucide-react";
+import { ArrowLeft, Plus } from "lucide-react";
 import ActionCard from "../actions/action-card";
 import ActionDialog from "../actions/action-dialog";
 import GridLayout from "../layout/grid-layout";
@@ -37,11 +37,17 @@ const JobDetailView = () => {
                 }
             />
 
-            <ProjectHeader>
-                <Button variant="outline" onClick={() => selectJob(null)}>
-                    Back to Jobs
-                </Button>
-            </ProjectHeader>
+            <ProjectHeader
+                backButton={
+                    <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => selectJob(null)}
+                    >
+                        <ArrowLeft />
+                    </Button>
+                }
+            />
             <JobHeader openAddActionModal={() => setIsActionModalOpen(true)} />
 
             {/* Actions List */}

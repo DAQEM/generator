@@ -7,7 +7,13 @@ type Props = {
 };
 
 const ConditionCard = ({ condition }: Props) => {
+    console.log(condition.type);
+
     const conditionType = conditionTypes[condition.type];
+
+    if (!conditionType) {
+        return null;
+    }
 
     return (
         <Card className="w-full">

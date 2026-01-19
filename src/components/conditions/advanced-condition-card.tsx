@@ -1,7 +1,7 @@
 import { conditionTypes } from "@/lib/data";
 import type { JobCondition } from "@/types";
 import _ from "lodash";
-import { X } from "lucide-react";
+import { CircleHelp, X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Input } from "../ui/input";
@@ -16,12 +16,18 @@ import {
 } from "../ui/select";
 import { Switch } from "../ui/switch";
 import { Textarea } from "../ui/textarea";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "../ui/tooltip";
 type Props = {
     condition: JobCondition;
     onRemoveCondition: (conditionId: string) => void;
     onUpdateCondition: (
         conditionId: string,
-        data: Partial<JobCondition>
+        data: Partial<JobCondition>,
     ) => void;
 };
 const AdvancedConditionCard = ({
@@ -74,8 +80,24 @@ const AdvancedConditionCard = ({
                             })
                         }
                     />
-                    <Label htmlFor={`inverted-${condition.id}`}>
+                    <Label
+                        htmlFor={`inverted-${condition.id}`}
+                        className="flex items-center gap-2"
+                    >
                         Invert Condition
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <CircleHelp className="h-4 w-4 text-muted-foreground cursor-pointer" />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>
+                                        If enabled, the condition must NOT be
+                                        met for the action to execute.
+                                    </p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
                     </Label>
                 </div>
             </CardHeader>
@@ -146,7 +168,7 @@ const AdvancedConditionCard = ({
                                                 param.name,
                                                 e.target.value
                                                     ? Number(e.target.value)
-                                                    : ""
+                                                    : "",
                                             )
                                         }
                                     />
@@ -159,7 +181,7 @@ const AdvancedConditionCard = ({
                                         onValueChange={(val) =>
                                             handleChange(
                                                 param.name,
-                                                val === "true"
+                                                val === "true",
                                             )
                                         }
                                     >
@@ -190,7 +212,7 @@ const AdvancedConditionCard = ({
                                         onValueChange={(val) =>
                                             handleChange(
                                                 param.name,
-                                                val === "null" ? null : val
+                                                val === "null" ? null : val,
                                             )
                                         }
                                     >
@@ -223,7 +245,7 @@ const AdvancedConditionCard = ({
                                         onChange={(e) =>
                                             handleChange(
                                                 param.name,
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                     />
@@ -262,7 +284,7 @@ const AdvancedConditionCard = ({
                                                     param.name,
                                                     val
                                                         .split(",")
-                                                        .map((s) => s.trim())
+                                                        .map((s) => s.trim()),
                                                 );
                                             } else {
                                                 handleChange(param.name, val);
